@@ -1,10 +1,14 @@
 <template>
-  <div class="list">
-    <div class="data">
-      <table class="ui celled table">
+ <div class="list d-inline-flex mx-2">
+    <Card
+        v-for="servicio in servicios"
+        :key="servicio.id"
+        :servicio="servicio"/>
+    <div class="">
+      <table class="ui celled table col-8">
         <thead>
           <tr>
-            <th style="width: 50px; text-align: center;">#</th>
+            <th style="width: 50px; text-align: center">#</th>
             <th>Imagen</th>
             <th>Nombre</th>
             <th>Tipo de servicio</th>
@@ -12,7 +16,7 @@
             <th>Fecha de fin</th>
             <th>Servicios</th>
             <th>Observaciones</th>
-            <th style="width: 148px;">Opciones</th>
+            <th style="width: 148px">Opciones</th>
           </tr>
         </thead>
 
@@ -32,15 +36,17 @@
 
 <script>
 import Detail from "./Detail";
+import Card from "./Card";
 export default {
   name: "DetailList",
   components: {
-    Detail
+    Detail,
+    Card,
   },
   props: {
     servicios: {
-      type: Array
-    }
+      type: Array,
+    },
   },
   methods: {
     onDelete(id) {
@@ -50,8 +56,8 @@ export default {
     onEdit(data) {
       // window.console.log("customer list edit " + data);
       this.$emit("onEdit", data);
-    }
-  }
+    },
+  },
 };
 </script>
 

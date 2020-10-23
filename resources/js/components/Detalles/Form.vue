@@ -13,22 +13,26 @@
           />
         </div>
 
-        <div class="four wide field">
-          <span>Tipo de Servicio</span>
-          <label>Básico</label>
-          <input
-            type="radio"
-            name="Tservcio"
-            @change="handleChange"
-            value="1"
-          />
-          <label>Avanzado</label>
-          <input
-            type="radio"
-            name="Tservcio"
-            @change="handleChange"
-            value="0"
-          />
+        <div class="four wide field d-block-flex">
+            <label>Tipo de servicio</label>
+          <div>
+            <label>Básico</label>
+            <input
+              type="radio"
+              name="Tservcio"
+              @change="handleChange"
+              value="1"
+            />
+          </div>
+          <div>
+            <label>Avanzado</label>
+            <input
+              type="radio"
+              name="Tservcio"
+              @change="handleChange"
+              value="0"
+            />
+          </div>
         </div>
 
         <div class="four wide field">
@@ -49,7 +53,7 @@
             :value="form.FechaFin"
           />
         </div>
-         <div class="four wide field">
+        <div class="four wide field">
           <label>Observación</label>
           <input
             type="text"
@@ -59,7 +63,7 @@
             :value="form.obser"
           />
         </div>
-         <div class="four wide field">
+        <div class="four wide field">
           <label>Imagen</label>
           <input
             type="text"
@@ -85,13 +89,13 @@ export default {
   data() {
     return {
       btnName: "Guardar",
-      btnClass: "ui primary button submit-button"
+      btnClass: "ui primary button submit-button",
     };
   },
   props: {
     form: {
-      type: Object
-    }
+      type: Object,
+    },
   },
   methods: {
     handleChange(event) {
@@ -124,7 +128,6 @@ export default {
         return false;
       }
 
-     
       if (document.getElementsByName("Tservcio")[0].value === "") {
         alert("Ingresa una opción de servicio");
         return false;
@@ -146,8 +149,6 @@ export default {
         return false;
       }
 
-     
-
       return true;
     },
     clearFormFields() {
@@ -158,19 +159,19 @@ export default {
       this.form.FechaFin = "";
       this.form.obser = "";
       this.form.img = "";
-      
+
       this.form.isEdit = false;
 
       // clear form fields
       document.querySelector(".form").reset();
-    }
+    },
   },
   updated() {
     if (this.form.isEdit) {
       this.btnName = "Actualizar";
       this.btnClass = "ui orange button submit-button";
     }
-  }
+  },
 };
 </script>
 
