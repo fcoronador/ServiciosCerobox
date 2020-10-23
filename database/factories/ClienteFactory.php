@@ -7,6 +7,11 @@ use Faker\Generator as Faker;
 
 $factory->define(cliente::class, function (Faker $faker) {
     return [
-        //
+        'nombre'=> $faker->name,
+        'cedula'=>$faker->unique()->numberBetween($min = 1000, $max = 9000),
+        'correo'=>$faker->email,
+        'telefono'=>$faker->unique()->numberBetween($min = 1000000, $max = 9000000),
+        'obser'=>$faker->text($maxNbChars = 200),
+        'img' => 'https://img.icons8.com/ios/452/laravel.png'
     ];
 });
