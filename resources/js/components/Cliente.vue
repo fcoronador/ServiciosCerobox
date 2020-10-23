@@ -35,7 +35,7 @@ export default {
     return {
       url: "http://localhost:8080/clientes", 
       customers: [],
-      form: { nombre: "", numID: "", isEdit: false }, 
+      form: {nombre:"",cedula:"",correo:"",telefono:"",obser:"",img:"", isEdit: false }, 
       loader: false
     };
   },
@@ -79,9 +79,12 @@ export default {
 
       axios
         .put(`${this.url}/${data.id}`, {
-          nombre: data.nombre,
-          numID: data.numID
-          //email: data.email
+          nombre:data.nombre,
+          cedula:data.cedula,
+          correo:data.correo,
+          telefono:data.telefono,
+          obser:data.obser,
+          img:data.img
         })
         .then(() => {
           this.getCustomers();
