@@ -1,16 +1,16 @@
 <template>
   <div class="card col-3 mx-3">
-    <img class="card-img" :src="servicio.img" width="200px" alt="" />
+    <img class="card-img" :src="detalle.img" width="200px" alt="" />
     <div class="card-body">
-      <h4 class="card-title">{{ servicio.nombre }} CC:{{ servicio.cedula }}</h4>
+      <h4 class="card-title">{{ detalle.nombre }} CC:{{ detalle.cedula }}</h4>
       <p class="card-text">
-        <strong>ID:</strong>{{ servicio.id }}
+        <strong>ID:</strong>{{ detalle.id }}
         <br>
-        <strong>Correo:</strong>{{ servicio.correo }}
+        <strong>Correo:</strong>{{ detalle.correo }}
         <br>
-        <strong>Télefono:</strong>{{ servicio.telefono }}
+        <strong>Télefono:</strong>{{ detalle.telefono }}
         <br>
-        <strong>Observaciones:</strong>{{ servicio.obser }}
+        <strong>Observaciones:</strong>{{ detalle.obser }}
         <br>
       </p>
     </div>
@@ -21,7 +21,7 @@
 export default {
   name: "Card",
   props: {
-    servicio: {
+    detalle: {
       type: Object,
     },
   },

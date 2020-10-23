@@ -1,9 +1,9 @@
 <template>
  <div class="list d-inline-flex mx-2">
     <Card
-        v-for="servicio in servicios"
-        :key="servicio.id"
-        :servicio="servicio"/>
+        v-for="detalle in detalles"
+        :key="detalle.id"
+        :detalle="detalle"/>
     <div class="">
       <table class="ui celled table col-8">
         <thead>
@@ -14,7 +14,6 @@
             <th>Tipo de servicio</th>
             <th>Fecha de inicio</th>
             <th>Fecha de fin</th>
-            <th>Servicios</th>
             <th>Observaciones</th>
             <th style="width: 148px">Opciones</th>
           </tr>
@@ -45,6 +44,9 @@ export default {
   },
   props: {
     servicios: {
+      type: Array,
+    },
+    detalles: {
       type: Array,
     },
   },

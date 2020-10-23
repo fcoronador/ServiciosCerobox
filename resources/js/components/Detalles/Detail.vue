@@ -1,13 +1,15 @@
 <template>
   <tr>
-    <td>{{ servicio.id }}</td>
-    <td><img :src="servicio.img" alt="" srcset=""></td>
-    <td>{{ servicio.nombre }}</td>
-    <td>{{ servicio.Tservcio }}</td>
-    <td>{{ servicio.FechaIni }}</td>
-    <td>{{ servicio.FechaFin }}</td>
-    <td>{{ servicio.obser }}</td>
-    <td>{{ servicio.servicios }}</td>
+   
+      <td>{{ servicio.id }}</td>
+      <td><img :src="servicio.img" alt="" srcset="" /></td>
+      <td>{{ servicio.nombre }}</td>
+      <td>{{ servicio.Tservcio }}</td>
+      <td>{{ servicio.FechaIni }}</td>
+      <td>{{ servicio.FechaFin }}</td>
+      <td>{{ servicio.obser}}</td>
+  
+
     <td>
       <button class="mini ui blue button" @click="onEdit">Editar</button>
       <button class="mini ui red button" @click="onDelete">Borrar</button>
@@ -20,8 +22,8 @@ export default {
   name: "Detail",
   props: {
     servicio: {
-      type: Object
-    }
+      type: Object,
+    },
   },
   methods: {
     onDelete() {
@@ -31,8 +33,8 @@ export default {
     onEdit() {
       // window.console.log("customer edit " + this.customer.id);
       this.$emit("onEdit", this.customer);
-    }
-  }
+    },
+  },
 };
 </script>
 

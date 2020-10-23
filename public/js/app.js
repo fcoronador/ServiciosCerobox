@@ -2184,7 +2184,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Card",
   props: {
-    servicio: {
+    detalle: {
       type: Object
     }
   }
@@ -2201,6 +2201,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -2285,7 +2287,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2296,6 +2297,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     servicios: {
+      type: Array
+    },
+    detalles: {
       type: Array
     }
   },
@@ -2347,6 +2351,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -2363,6 +2368,7 @@ __webpack_require__.r(__webpack_exports__);
       url: "http://localhost:8080/clientes",
       url2: "http://localhost:8080/servicios",
       servicios: [],
+      detalles: [],
       form: {
         nombre: "",
         img: "",
@@ -2383,7 +2389,9 @@ __webpack_require__.r(__webpack_exports__);
       id = id.replace('/detalles/', '');
       this.loader = true;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(this.url, "/").concat(id)).then(function (data) {
+        _this.detalles = data.data;
         _this.servicios = data.data;
+        _this.servicios = _this.servicios[0].servicios;
         _this.loader = false;
       });
     },
@@ -38625,31 +38633,29 @@ var render = function() {
   return _c("div", { staticClass: "card col-3 mx-3" }, [
     _c("img", {
       staticClass: "card-img",
-      attrs: { src: _vm.servicio.img, width: "200px", alt: "" }
+      attrs: { src: _vm.detalle.img, width: "200px", alt: "" }
     }),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
       _c("h4", { staticClass: "card-title" }, [
-        _vm._v(
-          _vm._s(_vm.servicio.nombre) + " CC:" + _vm._s(_vm.servicio.cedula)
-        )
+        _vm._v(_vm._s(_vm.detalle.nombre) + " CC:" + _vm._s(_vm.detalle.cedula))
       ]),
       _vm._v(" "),
       _c("p", { staticClass: "card-text" }, [
         _c("strong", [_vm._v("ID:")]),
-        _vm._v(_vm._s(_vm.servicio.id) + "\n      "),
+        _vm._v(_vm._s(_vm.detalle.id) + "\n      "),
         _c("br"),
         _vm._v(" "),
         _c("strong", [_vm._v("Correo:")]),
-        _vm._v(_vm._s(_vm.servicio.correo) + "\n      "),
+        _vm._v(_vm._s(_vm.detalle.correo) + "\n      "),
         _c("br"),
         _vm._v(" "),
         _c("strong", [_vm._v("Télefono:")]),
-        _vm._v(_vm._s(_vm.servicio.telefono) + "\n      "),
+        _vm._v(_vm._s(_vm.detalle.telefono) + "\n      "),
         _c("br"),
         _vm._v(" "),
         _c("strong", [_vm._v("Observaciones:")]),
-        _vm._v(_vm._s(_vm.servicio.obser) + "\n      "),
+        _vm._v(_vm._s(_vm.detalle.obser) + "\n      "),
         _c("br")
       ])
     ])
@@ -38694,8 +38700,6 @@ var render = function() {
     _vm._v(" "),
     _c("td", [_vm._v(_vm._s(_vm.servicio.obser))]),
     _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.servicio.servicios))]),
-    _vm._v(" "),
     _c("td", [
       _c(
         "button",
@@ -38737,8 +38741,8 @@ var render = function() {
     "div",
     { staticClass: "list d-inline-flex mx-2" },
     [
-      _vm._l(_vm.servicios, function(servicio) {
-        return _c("Card", { key: servicio.id, attrs: { servicio: servicio } })
+      _vm._l(_vm.detalles, function(detalle) {
+        return _c("Card", { key: detalle.id, attrs: { detalle: detalle } })
       }),
       _vm._v(" "),
       _c("div", {}, [
@@ -38783,8 +38787,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Fecha de fin")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Servicios")]),
-        _vm._v(" "),
         _c("th", [_vm._v("Observaciones")]),
         _vm._v(" "),
         _c("th", { staticStyle: { width: "148px" } }, [_vm._v("Opciones")])
@@ -38828,7 +38830,7 @@ var render = function() {
         _vm.loader ? _c("Loader") : _vm._e(),
         _vm._v(" "),
         _c("DetailList", {
-          attrs: { servicios: _vm.servicios },
+          attrs: { servicios: _vm.servicios, detalles: _vm.detalles },
           on: { onDelete: _vm.onDelete, onEdit: _vm.onEdit }
         })
       ],

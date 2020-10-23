@@ -11,6 +11,7 @@
       <Loader v-if="loader" />
       <DetailList
         :servicios="servicios"
+        :detalles="detalles"
         @onDelete="onDelete"
         @onEdit="onEdit"
       />
@@ -36,6 +37,7 @@ export default {
       url: "http://localhost:8080/clientes",
       url2: "http://localhost:8080/servicios",
       servicios: [],
+      detalles:[],
       form: {nombre: "", img: "", Tservcio: "", FechaIni: "", FechaFin: "", obser: "", isEdit: false }, 
       loader: false
     };
@@ -47,7 +49,9 @@ export default {
       this.loader = true;
 
       axios.get(`${this.url}/${id}`).then(data => {
+        this.detalles = data.data;
         this.servicios = data.data;
+        this.servicios = this.servicios[0].servicios;
         this.loader = false;
       });
     },
