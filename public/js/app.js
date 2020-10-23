@@ -2053,6 +2053,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Customer",
   props: {
@@ -2084,6 +2087,10 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Customer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Customer */ "./resources/js/components/Customer.vue");
+//
+//
+//
+//
 //
 //
 //
@@ -38620,9 +38627,17 @@ var render = function() {
   return _c("tr", [
     _c("td", [_vm._v(_vm._s(_vm.customer.id))]),
     _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.customer.nombre))]),
+    _c("td", [
+      _c("img", { attrs: { src: _vm.customer.img, alt: "", srcset: "" } })
+    ]),
     _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.customer.numID))]),
+    _c("td", [_vm._v(_vm._s(_vm.customer.cedula))]),
+    _vm._v(" "),
+    _c("td", [_vm._v(_vm._s(_vm.customer.correo))]),
+    _vm._v(" "),
+    _c("td", [_vm._v(_vm._s(_vm.customer.telefono))]),
+    _vm._v(" "),
+    _c("td", [_vm._v(_vm._s(_vm.customer.obser))]),
     _vm._v(" "),
     _c("td", [
       _c(
@@ -38692,9 +38707,17 @@ var staticRenderFns = [
           _vm._v("#")
         ]),
         _vm._v(" "),
+        _c("th", [_vm._v("Imagen")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Nombre")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Número de ID")]),
+        _c("th", [_vm._v("Cedula")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Correo")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Teléfono")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Observaciones")]),
         _vm._v(" "),
         _c("th", { staticStyle: { width: "148px" } }, [_vm._v("Opciones")])
       ])

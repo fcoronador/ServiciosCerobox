@@ -5,8 +5,12 @@
         <thead>
           <tr>
             <th style="width: 50px; text-align: center;">#</th>
+            <th>Imagen</th>
             <th>Nombre</th>
-            <th>Número de ID</th>
+            <th>Cedula</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+            <th>Observaciones</th>
             <th style="width: 148px;">Opciones</th>
           </tr>
         </thead>

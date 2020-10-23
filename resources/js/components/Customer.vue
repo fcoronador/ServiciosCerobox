@@ -1,8 +1,12 @@
 <template>
   <tr>
     <td>{{ customer.id }}</td>
+    <td><img :src="customer.img" alt="" srcset=""></td>
+    <td>{{ customer.cedula }}</td>
     <td>{{ customer.nombre }}</td>
-    <td>{{ customer.numID }}</td>
+    <td>{{ customer.correo }}</td>
+    <td>{{ customer.telefono }}</td>
+    <td>{{ customer.obser }}</td>
     <td>
       <button class="mini ui blue button" @click="onEdit">Editar</button>
       <button class="mini ui red button" @click="onDelete">Borrar</button>
