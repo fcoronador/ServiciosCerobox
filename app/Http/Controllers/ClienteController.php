@@ -26,7 +26,8 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cliente = cliente::create($request->all());
+        return response('Cliente creado', 200);
     }
 
     /**
@@ -37,7 +38,7 @@ class ClienteController extends Controller
      */
     public function show(cliente $cliente)
     {
-        //
+        return $cliente;
     }
 
     /**
@@ -49,7 +50,8 @@ class ClienteController extends Controller
      */
     public function update(Request $request, cliente $cliente)
     {
-        //
+        $cliente->update($request->all());
+        return response('Cliente actualizado', 200);
     }
 
     /**
@@ -60,6 +62,7 @@ class ClienteController extends Controller
      */
     public function destroy(cliente $cliente)
     {
-        //
+        $cliente->delete();
+        return response('Se elimino', 200);
     }
 }
