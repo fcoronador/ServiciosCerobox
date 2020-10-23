@@ -44,8 +44,6 @@ class ClienteController extends Controller
             echo $item->pivot->servicio_id;
         }
         
-        
-        
         return $cliente;
     }
 
