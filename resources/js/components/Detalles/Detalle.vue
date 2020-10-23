@@ -42,6 +42,8 @@ export default {
   },
   methods: {
     getDetalles() {
+      var id = window.location.pathname;
+      id = id.replace('/detalles/',''); 
       this.loader = true;
 
       axios.get(`${this.url}/${id}`).then(data => {
