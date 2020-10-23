@@ -15,6 +15,13 @@ class CreateClientesTable extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->integer('cedula')->unique();
+            $table->string('correo');
+            $table->integer('telefono');
+            $table->string('obser');
+            $table->string('img');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
