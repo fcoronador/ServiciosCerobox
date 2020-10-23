@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <example-component></example-component>
-
+    <Clientes></Clientes>
    @foreach ($clientes as $item)
        {{$item->nombre}}
    @endforeach
