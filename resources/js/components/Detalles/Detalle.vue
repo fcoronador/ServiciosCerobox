@@ -7,10 +7,10 @@
     </div>
 
     <div class="ui main container">
-      <MyForm :form="form" @onFormSubmit="onFormSubmit" />
+      <Form :form="form" @onFormSubmit="onFormSubmit" />
       <Loader v-if="loader" />
-      <CustomerList
-        :customers="customers"
+      <DetailList
+        :servicio="servicio"
         @onDelete="onDelete"
         @onEdit="onEdit"
       />
