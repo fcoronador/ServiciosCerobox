@@ -11,85 +11,66 @@
       <Loader v-if="loader" />
       <CustomerList
         :customers="customers"
-        :vehiculos="vehiculos"
         @onDelete="onDelete"
         @onEdit="onEdit"
-      >
-      </CustomerList>
+      />
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import MyForm from "../components/MyForm";
-import CustomerList from "../components/CustomerList";
-import Loader from "../components/Loader";
+import MyForm from "./MyForm";
+import CustomerList from "./CustomerList";
+import Loader from "./Loader";
 
 export default {
-  name: "Clientes",
+  name: "App",
   components: {
     MyForm,
     CustomerList,
-    Loader,
+    Loader
   },
   data() {
     return {
-      url: "http://localhost:8080/cliente",
-      url2: "http://localhost:8080/vehiculo",
+      url: "http://localhost:8080/clientes", 
       customers: [],
-      vehiculos: [],
-      form: {
-        id: "",
-        nombre: "",
-        numID: "",
-        placa: "",
-        tipo: "",
-        cliente_id: "",
-        isEdit: false,
-      },
-      loader: false,
+      form: { nombre: "", numID: "", isEdit: false }, 
+      loader: false
     };
   },
   methods: {
     getCustomers() {
       this.loader = true;
 
-      axios.get(this.url).then((data) => {
+      axios.get(this.url).then(data => {
         this.customers = data.data;
-        this.loader = false;
-      });
-
-      axios.get(this.url2).then((data) => {
-        this.vehiculos = data.data;
         this.loader = false;
       });
     },
     deleteCustomer(id) {
       this.loader = true;
 
-      axios
-        .delete(`${this.url}/${id}`)
+      axios.delete(`${this.url}/${id}`)
         .then(() => {
           this.getCustomers();
         })
-        .catch((e) => {
+        .catch(e => {
           alert(e);
         });
     },
     createCustomer(data) {
       this.loader = true;
 
-      axios
-        .post(this.url, {
-          nombre: data.nombre,
-          numID: data.numID,
+      axios.post(this.url, {
+          nombre : data.nombre,
+          numID: data.numID
           /* email: data.email */
         })
         .then(() => {
           this.getCustomers();
         })
-        .catch((e) => {
+        .catch(e => {
           alert(e);
         });
     },
@@ -99,28 +80,13 @@ export default {
       axios
         .put(`${this.url}/${data.id}`, {
           nombre: data.nombre,
-          numID: data.numID,
+          numID: data.numID
           //email: data.email
         })
         .then(() => {
           this.getCustomers();
         })
-        .catch((e) => {
-          alert(e);
-        });
-
-      axios
-        .post(this.url2, {
-          nombre: data.nombre,
-          placa: data.placa,
-          tipo: data.tipo,
-          cliente_id: data.id,
-          /* email: data.email */
-        })
-        .then(() => {
-          this.getCustomers();
-        })
-        .catch((e) => {
+        .catch(e => {
           alert(e);
         });
     },
@@ -145,11 +111,11 @@ export default {
         // call create customer
         this.createCustomer(data);
       }
-    },
+    }
   },
   created() {
     this.getCustomers();
-  },
+  }
 };
 </script>
 

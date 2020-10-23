@@ -7,7 +7,6 @@
             <th style="width: 50px; text-align: center;">#</th>
             <th>Nombre</th>
             <th>Número de ID</th>
-            <th>Vehículos</th>
             <th style="width: 148px;">Opciones</th>
           </tr>
         </thead>
@@ -17,7 +16,6 @@
             v-for="customer in customers"
             :key="customer.id"
             :customer="customer"
-            :vehiculos="vehiculos"
             @onDelete="onDelete"
             @onEdit="onEdit"
           />
@@ -29,7 +27,6 @@
 
 <script>
 import Customer from "./Customer";
-
 export default {
   name: "CustomerList",
   components: {
@@ -38,10 +35,7 @@ export default {
   props: {
     customers: {
       type: Array
-    },
-    vehiculos:{ 
-        type: Array
-    },
+    }
   },
   methods: {
     onDelete(id) {

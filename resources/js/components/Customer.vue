@@ -4,14 +4,6 @@
     <td>{{ customer.nombre }}</td>
     <td>{{ customer.numID }}</td>
     <td>
-      <div
-        v-for="vehiculo in vehiculos"
-        :key="vehiculo.id"
-        :vehiculo="vehiculo">
-      <span v-if="customer.id == vehiculo.cliente_id" >{{vehiculo.placa}} Tipo : {{vehiculo.tipo}} </span>
-      </div>
-    </td>
-    <td>
       <button class="mini ui blue button" @click="onEdit">Editar</button>
       <button class="mini ui red button" @click="onDelete">Borrar</button>
     </td>
@@ -19,18 +11,11 @@
 </template>
 
 <script>
-
 export default {
   name: "Customer",
   props: {
     customer: {
-      type: Object,
-    },
-    vehiculos: {
-      type: Array,
-    },
-    vehiculo:{
-        type: Object
+      type: Object
     }
   },
   methods: {
@@ -41,8 +26,8 @@ export default {
     onEdit() {
       // window.console.log("customer edit " + this.customer.id);
       this.$emit("onEdit", this.customer);
-    },
-  },
+    }
+  }
 };
 </script>
 

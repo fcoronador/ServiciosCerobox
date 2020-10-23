@@ -23,27 +23,6 @@
             :value="form.numID"
           />
         </div>
-         <div :class="campoPlaca" class="four wide field">
-          <label>Placa</label>
-          <input
-            type="text"
-            name="placa"
-            placeholder="placa"
-            @change="handleChange"
-            :value="form.placa"
-          />
-        </div>
-
-        <div :class="campoTipo" class="five wide field">
-          <label>Tipo de Vehículo</label>
-          <input 
-            type="text"
-            name="tipo"
-            placeholder="A para auto, M para moto y B para bicicleta"
-            @change="handleChange"
-            :value="form.tipo"
-          />
-        </div>
 
         <div class="six wide field">
           <!-- <label>E-mail</label>
@@ -72,9 +51,7 @@ export default {
   data() {
     return {
       btnName: "Guardar",
-      btnClass: "ui primary button submit-button",
-      campoPlaca: "collapse",
-      campoTipo: "collapse"
+      btnClass: "ui primary button submit-button"
     };
   },
   props: {
@@ -101,8 +78,6 @@ export default {
         // change the button to save
         this.btnName = "Guardar";
         this.btnClass = "ui primary button submit-button";
-        this.campoPlaca = "collapse";
-        this.campoTipo = "collapse";
 
         // clear form fields
         this.clearFormFields();
@@ -115,18 +90,9 @@ export default {
         return false;
       }
 
+      // last name
       if (document.getElementsByName("numID")[0].value === "") {
         alert("Ingresa un número de identificación");
-        return false;
-      }
-
-      if (document.getElementsByName("placa")[0].value === "") {
-        alert("Ingresa un número de placa");
-        return false;
-      }
-
-      if (document.getElementsByName("tipo")[0].value === "") {
-        alert("Ingresa un tipo de vehículo");
         return false;
       }
 
@@ -142,8 +108,6 @@ export default {
       // clear form data
       this.form.nombre = "";
       this.form.numID = "";
-      this.form.placa = "";
-      this.form.tipo = "";
       /* this.form.email = ""; */
       this.form.isEdit = false;
 
@@ -155,9 +119,6 @@ export default {
     if (this.form.isEdit) {
       this.btnName = "Actualizar";
       this.btnClass = "ui orange button submit-button";
-      this.campoPlaca = "show";
-      this.campoTipo = "show";
-
     }
   }
 };
