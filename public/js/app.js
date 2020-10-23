@@ -2056,6 +2056,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Customer",
   props: {
@@ -38633,6 +38634,8 @@ var render = function() {
     _vm._v(" "),
     _c("td", [_vm._v(_vm._s(_vm.customer.cedula))]),
     _vm._v(" "),
+    _c("td", [_vm._v(_vm._s(_vm.customer.nombre))]),
+    _vm._v(" "),
     _c("td", [_vm._v(_vm._s(_vm.customer.correo))]),
     _vm._v(" "),
     _c("td", [_vm._v(_vm._s(_vm.customer.telefono))]),
@@ -38709,9 +38712,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Imagen")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Nombre")]),
-        _vm._v(" "),
         _c("th", [_vm._v("Cedula")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Nombre")]),
         _vm._v(" "),
         _c("th", [_vm._v("Correo")]),
         _vm._v(" "),

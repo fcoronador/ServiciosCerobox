@@ -6,8 +6,8 @@
           <tr>
             <th style="width: 50px; text-align: center;">#</th>
             <th>Imagen</th>
-            <th>Nombre</th>
             <th>Cedula</th>
+            <th>Nombre</th>
             <th>Correo</th>
             <th>Teléfono</th>
             <th>Observaciones</th>

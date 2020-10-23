@@ -12,6 +12,6 @@ $factory->define(cliente::class, function (Faker $faker) {
         'correo'=>$faker->email,
         'telefono'=>$faker->unique()->numberBetween($min = 1000000, $max = 9000000),
         'obser'=>$faker->text($maxNbChars = 200),
-        'img' => 'https://img.icons8.com/ios/452/laravel.png'
+        'img' => 'https://i.imgur.com/Hvw1negs.png'
     ];
 });
