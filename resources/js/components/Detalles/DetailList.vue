@@ -1,25 +1,25 @@
 <template>
-  <div class="customer-list">
+  <div class="list">
     <div class="data">
       <table class="ui celled table">
         <thead>
           <tr>
             <th style="width: 50px; text-align: center;">#</th>
             <th>Imagen</th>
-            <th>Cedula</th>
             <th>Nombre</th>
-            <th>Correo</th>
-            <th>Teléfono</th>
+            <th>Tipo de servicio</th>
+            <th>Fecha de inicio</th>
+            <th>Fecha de fin</th>
             <th>Observaciones</th>
             <th style="width: 148px;">Opciones</th>
           </tr>
         </thead>
 
         <tbody>
-          <Customer
-            v-for="customer in customers"
-            :key="customer.id"
-            :customer="customer"
+          <Detail
+            v-for="servicio in servicios"
+            :key="servicio.id"
+            :servicio="servicio"
             @onDelete="onDelete"
             @onEdit="onEdit"
           />
@@ -30,14 +30,14 @@
 </template>
 
 <script>
-import Customer from "./Customer";
+import Detail from "./Detail";
 export default {
-  name: "CustomerList",
+  name: "DetailList",
   components: {
-    Customer
+    Detail
   },
   props: {
-    customers: {
+    servicios: {
       type: Array
     }
   },
@@ -54,4 +54,4 @@ export default {
 };
 </script>
 
-<style scoped></style>
+

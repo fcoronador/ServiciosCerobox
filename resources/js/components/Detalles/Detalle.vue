@@ -10,7 +10,7 @@
       <Form :form="form" @onFormSubmit="onFormSubmit" />
       <Loader v-if="loader" />
       <DetailList
-        :servicio="servicio"
+        :servicios="servicios"
         @onDelete="onDelete"
         @onEdit="onEdit"
       />
@@ -35,7 +35,7 @@ export default {
     return {
       url: "http://localhost:8080/clientes",
       url2: "http://localhost:8080/servicios",
-      servicio: [],
+      servicios: [],
       form: {nombre: "", img: "", Tservcio: "", FechaIni: "", FechaFin: "", obser: "", isEdit: false }, 
       loader: false
     };
@@ -121,7 +121,7 @@ export default {
     }
   },
   created() {
-    this.getCustomers();
+    this.getDetalles();
   }
 };
 </script>
