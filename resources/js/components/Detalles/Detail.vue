@@ -1,12 +1,13 @@
 <template>
   <tr>
-    <td>{{ customer.id }}</td>
-    <td><img :src="customer.img" alt="" srcset=""></td>
-    <td>{{ customer.cedula }}</td>
-    <td>  <a :href="'http://localhost:8080/detalles/'+customer.id"> {{ customer.nombre }} </a> </td>
-    <td>{{ customer.correo }}</td>
-    <td>{{ customer.telefono }}</td>
-    <td>{{ customer.obser }}</td>
+    <td>{{ servicio.id }}</td>
+    <td><img :src="servicio.img" alt="" srcset=""></td>
+    <td>{{ servicio.nombre }}</td>
+    <td>{{ servicio.Tservcio }}</td>
+    <td>{{ servicio.FechaIni }}</td>
+    <td>{{ servicio.FechaFin }}</td>
+    <td>{{ servicio.obser }}</td>
+    <td>{{ servicio.servicios }}</td>
     <td>
       <button class="mini ui blue button" @click="onEdit">Editar</button>
       <button class="mini ui red button" @click="onDelete">Borrar</button>
@@ -16,9 +17,9 @@
 
 <script>
 export default {
-  name: "Customer",
+  name: "Detail",
   props: {
-    customer: {
+    servicio: {
       type: Object
     }
   },
