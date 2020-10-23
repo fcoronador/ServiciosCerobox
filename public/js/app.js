@@ -1950,7 +1950,11 @@ __webpack_require__.r(__webpack_exports__);
       customers: [],
       form: {
         nombre: "",
-        numID: "",
+        cedula: "",
+        correo: "",
+        telefono: "",
+        obser: "",
+        img: "",
         isEdit: false
       },
       loader: false
@@ -1982,9 +1986,11 @@ __webpack_require__.r(__webpack_exports__);
       this.loader = true;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(this.url, {
         nombre: data.nombre,
-        numID: data.numID
-        /* email: data.email */
-
+        cedula: data.cedula,
+        correo: data.correo,
+        telefono: data.telefono,
+        obser: data.obser,
+        img: data.img
       }).then(function () {
         _this3.getCustomers();
       })["catch"](function (e) {
@@ -1997,8 +2003,11 @@ __webpack_require__.r(__webpack_exports__);
       this.loader = true;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("".concat(this.url, "/").concat(data.id), {
         nombre: data.nombre,
-        numID: data.numID //email: data.email
-
+        cedula: data.cedula,
+        correo: data.correo,
+        telefono: data.telefono,
+        obser: data.obser,
+        img: data.img
       }).then(function () {
         _this4.getCustomers();
       })["catch"](function (e) {
@@ -2254,6 +2263,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MyForm",
   data: function data() {
@@ -2295,28 +2334,43 @@ __webpack_require__.r(__webpack_exports__);
       if (document.getElementsByName("nombre")[0].value === "") {
         alert("Ingresa un nombre");
         return false;
-      } // last name
+      }
 
-
-      if (document.getElementsByName("numID")[0].value === "") {
+      if (document.getElementsByName("cedula")[0].value === "") {
         alert("Ingresa un número de identificación");
         return false;
-      } // email
+      }
 
-      /* if (document.getElementsByName("email")[0].value === "") {
-        alert("Enter email");
+      if (document.getElementsByName("correo")[0].value === "") {
+        alert("Ingresa un correo");
         return false;
-      } */
+      }
 
+      if (document.getElementsByName("telefono")[0].value === "") {
+        alert("Ingresa un teléfono");
+        return false;
+      }
+
+      if (document.getElementsByName("obser")[0].value === "") {
+        alert("Ingresa una observación");
+        return false;
+      }
+
+      if (document.getElementsByName("img")[0].value === "") {
+        alert("Ingresa una url");
+        return false;
+      }
 
       return true;
     },
     clearFormFields: function clearFormFields() {
       // clear form data
       this.form.nombre = "";
-      this.form.numID = "";
-      /* this.form.email = ""; */
-
+      this.form.cedula = "";
+      this.form.correo = "";
+      this.form.telefono = "";
+      this.form.obser = "";
+      this.form.img = "";
       this.form.isEdit = false; // clear form fields
 
       document.querySelector(".form").reset();
@@ -38842,16 +38896,66 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "four wide field" }, [
-          _c("label", [_vm._v("Número de  ID")]),
+          _c("label", [_vm._v("Cédula")]),
           _vm._v(" "),
           _c("input", {
-            attrs: { type: "number", name: "numID", placeholder: "ID" },
-            domProps: { value: _vm.form.numID },
+            attrs: { type: "number", name: "cedula", placeholder: "ID" },
+            domProps: { value: _vm.form.cedula },
             on: { change: _vm.handleChange }
           })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "six wide field" }),
+        _c("div", { staticClass: "four wide field" }, [
+          _c("label", [_vm._v("Correo")]),
+          _vm._v(" "),
+          _c("input", {
+            attrs: {
+              type: "text",
+              name: "correo",
+              placeholder: "email@correo.com"
+            },
+            domProps: { value: _vm.form.correo },
+            on: { change: _vm.handleChange }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "four wide field" }, [
+          _c("label", [_vm._v("Teléfono")]),
+          _vm._v(" "),
+          _c("input", {
+            attrs: { type: "number", name: "telefono", placeholder: "2004458" },
+            domProps: { value: _vm.form.telefono },
+            on: { change: _vm.handleChange }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "four wide field" }, [
+          _c("label", [_vm._v("Observación")]),
+          _vm._v(" "),
+          _c("input", {
+            attrs: {
+              type: "text",
+              name: "obser",
+              placeholder: "Observaciones"
+            },
+            domProps: { value: _vm.form.obser },
+            on: { change: _vm.handleChange }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "four wide field" }, [
+          _c("label", [_vm._v("Imagen")]),
+          _vm._v(" "),
+          _c("input", {
+            attrs: {
+              type: "text",
+              name: "img",
+              placeholder: "Url de la imagen"
+            },
+            domProps: { value: _vm.form.img },
+            on: { change: _vm.handleChange }
+          })
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "two wide field" }, [
           _c(

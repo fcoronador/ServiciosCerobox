@@ -10,7 +10,7 @@ $factory->define(cliente::class, function (Faker $faker) {
         'nombre'=> $faker->name,
         'cedula'=>$faker->unique()->numberBetween($min = 1000, $max = 9000),
         'correo'=>$faker->email,
-        'telefono'=>$faker->unique()->numberBetween($min = 1000000, $max = 9000000),
+        'telefono'=>$faker->unique()->tollFreePhoneNumber,
         'obser'=>$faker->text($maxNbChars = 200),
         'img' => 'https://i.imgur.com/Hvw1negs.png'
     ];

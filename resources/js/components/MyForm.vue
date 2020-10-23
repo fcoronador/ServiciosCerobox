@@ -14,27 +14,57 @@
         </div>
 
         <div class="four wide field">
-          <label>Número de  ID</label>
+          <label>Cédula</label>
           <input
             type="number"
-            name="numID"
+            name="cedula"
             placeholder="ID"
             @change="handleChange"
-            :value="form.numID"
+            :value="form.cedula"
           />
         </div>
 
-        <div class="six wide field">
-          <!-- <label>E-mail</label>
+        <div class="four wide field">
+          <label>Correo</label>
           <input
-            type="email"
-            name="email"
-            placeholder="joe@gmail.com"
+            type="text"
+            name="correo"
+            placeholder="email@correo.com"
             @change="handleChange"
-            :value="form.email"
-          /> -->
+            :value="form.correo"
+          />
         </div>
 
+        <div class="four wide field">
+          <label>Teléfono</label>
+          <input
+            type="number"
+            name="telefono"
+            placeholder="2004458"
+            @change="handleChange"
+            :value="form.telefono"
+          />
+        </div>
+         <div class="four wide field">
+          <label>Observación</label>
+          <input
+            type="text"
+            name="obser"
+            placeholder="Observaciones"
+            @change="handleChange"
+            :value="form.obser"
+          />
+        </div>
+         <div class="four wide field">
+          <label>Imagen</label>
+          <input
+            type="text"
+            name="img"
+            placeholder="Url de la imagen"
+            @change="handleChange"
+            :value="form.img"
+          />
+        </div>
         <div class="two wide field">
           <button :class="btnClass" @click="onFormSubmit">
             {{ btnName }}
@@ -90,25 +120,41 @@ export default {
         return false;
       }
 
-      // last name
-      if (document.getElementsByName("numID")[0].value === "") {
+     
+      if (document.getElementsByName("cedula")[0].value === "") {
         alert("Ingresa un número de identificación");
         return false;
       }
-
-      // email
-      /* if (document.getElementsByName("email")[0].value === "") {
-        alert("Enter email");
+      if (document.getElementsByName("correo")[0].value === "") {
+        alert("Ingresa un correo");
         return false;
-      } */
+      }
+      if (document.getElementsByName("telefono")[0].value === "") {
+        alert("Ingresa un teléfono");
+        return false;
+      }
+      if (document.getElementsByName("obser")[0].value === "") {
+        alert("Ingresa una observación");
+        return false;
+      }
+      if (document.getElementsByName("img")[0].value === "") {
+        alert("Ingresa una url");
+        return false;
+      }
+
+     
 
       return true;
     },
     clearFormFields() {
       // clear form data
       this.form.nombre = "";
-      this.form.numID = "";
-      /* this.form.email = ""; */
+      this.form.cedula = "";
+      this.form.correo = "";
+      this.form.telefono = "";
+      this.form.obser = "";
+      this.form.img = "";
+      
       this.form.isEdit = false;
 
       // clear form fields

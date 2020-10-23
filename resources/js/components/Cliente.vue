@@ -63,9 +63,12 @@ export default {
       this.loader = true;
 
       axios.post(this.url, {
-          nombre : data.nombre,
-          numID: data.numID
-          /* email: data.email */
+          nombre:data.nombre,
+          cedula:data.cedula,
+          correo:data.correo,
+          telefono:data.telefono,
+          obser:data.obser,
+          img:data.img
         })
         .then(() => {
           this.getCustomers();

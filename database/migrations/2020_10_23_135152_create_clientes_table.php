@@ -18,7 +18,7 @@ class CreateClientesTable extends Migration
             $table->string('nombre');
             $table->integer('cedula')->unique();
             $table->string('correo');
-            $table->integer('telefono');
+            $table->string('telefono');
             $table->string('obser');
             $table->string('img');
             $table->softDeletes();
