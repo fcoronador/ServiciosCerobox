@@ -15,9 +15,9 @@ class CreateClienteServiciosTable extends Migration
     {
         Schema::create('cliente_servicios', function (Blueprint $table) {
             $table->id();
-            $table->integer('cliente_id')->unsigned();
+            $table->bigInteger('cliente_id')->unsigned();
             $table->foreign('cliente_id')->references('id')->on('clientes');
-            $table->integer('servicio_id');
+            $table->bigInteger('servicio_id')->unsigned();
             $table->foreign('servicio_id')->references('id')->on('servicios');
             $table->timestamps();
         });
