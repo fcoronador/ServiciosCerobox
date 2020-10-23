@@ -38688,7 +38688,15 @@ var render = function() {
     _vm._v(" "),
     _c("td", [_vm._v(_vm._s(_vm.customer.cedula))]),
     _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.customer.nombre))]),
+    _c("td", [
+      _c(
+        "a",
+        {
+          attrs: { href: "http://localhost:8080/clientes/" + _vm.customer.id }
+        },
+        [_vm._v(" " + _vm._s(_vm.customer.nombre) + " ")]
+      )
+    ]),
     _vm._v(" "),
     _c("td", [_vm._v(_vm._s(_vm.customer.correo))]),
     _vm._v(" "),
