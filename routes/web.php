@@ -18,3 +18,4 @@ Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('clientes',ClienteController::class);
 Route::get('/','NavController@index' )->name('inicio');
+Route::get('/detalles/{cliente}','NavController@ClienteDetalle' )->name('cliente');

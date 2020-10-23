@@ -3,7 +3,7 @@
     <td>{{ customer.id }}</td>
     <td><img :src="customer.img" alt="" srcset=""></td>
     <td>{{ customer.cedula }}</td>
-    <td>  <a :href="'http://localhost:8080/clientes/'+customer.id"> {{ customer.nombre }} </a> </td>
+    <td>  <a :href="'http://localhost:8080/detalles/'+customer.id"> {{ customer.nombre }} </a> </td>
     <td>{{ customer.correo }}</td>
     <td>{{ customer.telefono }}</td>
     <td>{{ customer.obser }}</td>

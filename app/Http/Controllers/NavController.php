@@ -13,5 +13,9 @@ class NavController extends Controller
     }
 
 
+    public function ClienteDetalle()
+    {
+        return view('detalles');
+    }
 
 }
