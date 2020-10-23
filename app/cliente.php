@@ -11,4 +11,12 @@ class cliente extends Model
 
     protected $fillable = ['nombre','cedula','correo','telefono','obser','img'];
     protected $dates = ['deleted_at'];
+
+
+    public function servicios(){
+        return $this->belongsToMany('\App\servicio','cliente_servicio')
+            ->withPivot('servicio_id');
+    }
+
+    
 }

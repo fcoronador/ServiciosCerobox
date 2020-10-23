@@ -18,4 +18,10 @@ class servicio extends Model
         'obser'
     ];
     protected $dates = ['deleted_at'];
+
+    public function clientes(){
+        return $this->belongsToMany('\App\cliente','cliente_servicio')
+            ->withPivot('cliente_id');
+    }
+
 }

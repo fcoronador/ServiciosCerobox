@@ -8,7 +8,7 @@ use phpDocumentor\Reflection\PseudoTypes\True_;
 
 $factory->define(servicio::class, function (Faker $faker) {
     return [
-        'nombre' => $faker->name,
+        'nombre' => $faker->companySuffix,
         'img' => 'https://img.icons8.com/ios/452/laravel.png',
         'Tservcio' => true,
         'FechaIni' => $faker->date($format = 'Y/m/d', $max = 'now'),
