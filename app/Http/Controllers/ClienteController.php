@@ -15,7 +15,7 @@ class ClienteController extends Controller
     public function index()
     {
         $clientes =  cliente::all();
-        return $clientes;
+        return view('clientes',compact('clientes'));
     }
 
     /**
