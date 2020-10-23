@@ -2335,10 +2335,9 @@ __webpack_require__.r(__webpack_exports__);
 
       var id = window.location.pathname;
       id = id.replace('/detalles/', '');
-      window.console.log(id);
       this.loader = true;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(this.url, "/").concat(id)).then(function (data) {
-        _this.servicio = data.data;
+        _this.servicios = data.data;
         _this.loader = false;
       });
     },

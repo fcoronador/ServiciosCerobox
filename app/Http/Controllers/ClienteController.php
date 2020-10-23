@@ -41,10 +41,10 @@ class ClienteController extends Controller
         
         foreach($cliente->servicios as $item)
         {
-            echo $item->pivot->servicio_id;
+             $item->pivot->servicio_id;
         }
         
-        return $cliente;
+        return ['0' =>  $cliente];
     }
 
     /**

@@ -47,7 +47,7 @@ export default {
       this.loader = true;
 
       axios.get(`${this.url}/${id}`).then(data => {
-        this.servicio = data.data;
+        this.servicios = data.data;
         this.loader = false;
       });
     },
