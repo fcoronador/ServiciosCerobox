@@ -14,7 +14,7 @@ class cliente extends Model
 
 
     public function servicios(){
-        return $this->belongsToMany('\App\servicio','cliente_servicio')
+        return $this->belongsToMany('\App\servicio','cliente_servicios')
             ->withPivot('servicio_id');
     }
 

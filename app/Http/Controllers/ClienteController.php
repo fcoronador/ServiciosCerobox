@@ -38,6 +38,14 @@ class ClienteController extends Controller
      */
     public function show(cliente $cliente)
     {
+        
+        foreach($cliente->servicios as $item)
+        {
+            echo $item->pivot->servicio_id;
+        }
+        
+        
+        
         return $cliente;
     }
 

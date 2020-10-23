@@ -20,7 +20,7 @@ class servicio extends Model
     protected $dates = ['deleted_at'];
 
     public function clientes(){
-        return $this->belongsToMany('\App\cliente','cliente_servicio')
+        return $this->belongsToMany('\App\cliente','cliente_servicios')
             ->withPivot('cliente_id');
     }
 
