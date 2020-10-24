@@ -7,10 +7,11 @@ window._ = require('lodash');
  */
 
 try {
-    window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
+    window.Popper = require('popper.js').default;
 
     require('bootstrap');
+    require('datatables.net')(window, $); //ESto activo el datatable.net
 } catch (e) {}
 
 /**

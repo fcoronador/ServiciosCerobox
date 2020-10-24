@@ -1,5 +1,5 @@
 <template>
- <div class="list d-inline-flex mx-2">
+  <div class="list d-inline-flex mx-2">
     <div class="">
       <table class="ui celled table">
         <thead>
@@ -15,7 +15,7 @@
           </tr>
         </thead>
 
-        <tbody>
+        <draggable v-model="servicios" tag="tbody">
           <Detail
             v-for="servicio in servicios"
             :key="servicio.id"
@@ -23,7 +23,7 @@
             @onDelete="onDelete"
             @onEdit="onEdit"
           />
-        </tbody>
+        </draggable>
       </table>
     </div>
   </div>
@@ -31,10 +31,13 @@
 
 <script>
 import Detail from "./Detail";
+import draggable from "vuedraggable";
+
 export default {
   name: "DetailList",
   components: {
     Detail,
+    draggable,
   },
   props: {
     servicios: {

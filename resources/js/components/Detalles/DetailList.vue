@@ -5,10 +5,10 @@
         :key="detalle.id"
         :detalle="detalle"/>
     <div class="">
-      <table class="ui celled table col-8">
+      <table class="table" id="table_id">
         <thead>
           <tr>
-            <th style="width: 50px; text-align: center">#</th>
+            <th style="text-align: center">#</th>
             <th>Imagen</th>
             <th>Nombre</th>
             <th>Tipo de servicio</th>
