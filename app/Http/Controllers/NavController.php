@@ -18,4 +18,9 @@ class NavController extends Controller
         return view('detalles');
     }
 
+    public function ControlServicios()
+    {
+        return view('servicios');
+    }
+
 }

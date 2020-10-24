@@ -17,5 +17,7 @@ Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('clientes',ClienteController::class);
+Route::resource('servicios',ServicioController::class);
 Route::get('/','NavController@index' )->name('inicio');
+Route::get('/ControlServicios','NavController@ControlServicios' )->name('servicios');
 Route::get('/detalles/{cliente}','NavController@ClienteDetalle' )->name('cliente');
