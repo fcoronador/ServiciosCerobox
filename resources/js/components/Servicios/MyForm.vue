@@ -13,39 +13,47 @@
           />
         </div>
 
-        <div class="four wide field">
-          <label>Cédula</label>
-          <input
-            type="number"
-            name="cedula"
-            placeholder="ID"
-            @change="handleChange"
-            :value="form.cedula"
-          />
+        <div class="four wide field d-block-flex">
+            <label>Tipo de servicio</label>
+          <div>
+            <label>Básico</label>
+            <input
+              type="radio"
+              name="Tservcio"
+              @change="handleChange"
+              value="1"
+            />
+          </div>
+          <div>
+            <label>Avanzado</label>
+            <input
+              type="radio"
+              name="Tservcio"
+              @change="handleChange"
+              value="0"
+            />
+          </div>
         </div>
 
         <div class="four wide field">
-          <label>Correo</label>
+          <label>Fecha de Inicio</label>
           <input
-            type="text"
-            name="correo"
-            placeholder="email@correo.com"
+            type="date"
+            name="FechaIni"
             @change="handleChange"
-            :value="form.correo"
+            :value="form.FechaIni"
           />
         </div>
-
         <div class="four wide field">
-          <label>Teléfono</label>
+          <label>Fecha de Finalización</label>
           <input
-            type="number"
-            name="telefono"
-            placeholder="2004458"
+            type="date"
+            name="FechaFin"
             @change="handleChange"
-            :value="form.telefono"
+            :value="form.FechaFin"
           />
         </div>
-         <div class="four wide field">
+        <div class="four wide field">
           <label>Observación</label>
           <input
             type="text"
@@ -55,7 +63,7 @@
             :value="form.obser"
           />
         </div>
-         <div class="four wide field">
+        <div class="four wide field">
           <label>Imagen</label>
           <input
             type="text"
@@ -77,17 +85,17 @@
 
 <script>
 export default {
-  name: "MyForm",
+  name: "Form",
   data() {
     return {
       btnName: "Guardar",
-      btnClass: "ui primary button submit-button"
+      btnClass: "ui primary button submit-button",
     };
   },
   props: {
     form: {
-      type: Object
-    }
+      type: Object,
+    },
   },
   methods: {
     handleChange(event) {
@@ -120,17 +128,16 @@ export default {
         return false;
       }
 
-     
-      if (document.getElementsByName("cedula")[0].value === "") {
-        alert("Ingresa un número de identificación");
+      if (document.getElementsByName("Tservcio")[0].value === "") {
+        alert("Ingresa una opción de servicio");
         return false;
       }
-      if (document.getElementsByName("correo")[0].value === "") {
-        alert("Ingresa un correo");
+      if (document.getElementsByName("FechaIni")[0].value === "") {
+        alert("Ingresa una Fecha Inicio");
         return false;
       }
-      if (document.getElementsByName("telefono")[0].value === "") {
-        alert("Ingresa un teléfono");
+      if (document.getElementsByName("FechaFin")[0].value === "") {
+        alert("Ingresa una Fecha de finalización");
         return false;
       }
       if (document.getElementsByName("obser")[0].value === "") {
@@ -142,32 +149,29 @@ export default {
         return false;
       }
 
-     
-
       return true;
     },
     clearFormFields() {
       // clear form data
       this.form.nombre = "";
-      this.form.cedula = "";
-      this.form.correo = "";
-      this.form.telefono = "";
+      this.form.Tservcio = "";
+      this.form.FechaIni = "";
+      this.form.FechaFin = "";
       this.form.obser = "";
       this.form.img = "";
-      
+
       this.form.isEdit = false;
 
       // clear form fields
       document.querySelector(".form").reset();
-    }
+    },
   },
   updated() {
     if (this.form.isEdit) {
       this.btnName = "Actualizar";
       this.btnClass = "ui orange button submit-button";
     }
-  }
+  },
 };
 </script>
 
-<style scoped></style>

@@ -2,7 +2,7 @@
   <div id="app">
     <div class="ui fixed inverted menu vue-color">
       <div class="ui container">
-        <a href="#" class="header item">Gestion Clientes</a>
+        <a href="#" class="header item">Gestion de Servicios</a>
       </div>
     </div>
 
@@ -22,7 +22,7 @@
 import axios from "axios";
 import MyForm from "./MyForm";
 import CustomerList from "./CustomerList";
-import Loader from "./Loader";
+import Loader from "../Loader";
 
 export default {
   name: "App",
@@ -33,7 +33,7 @@ export default {
   },
   data() {
     return {
-      url: "http://localhost:8080/clientes", 
+      url: "http://localhost:8080/servicios", 
       customers: [],
       form: {nombre:"",cedula:"",correo:"",telefono:"",obser:"",img:"", isEdit: false }, 
       loader: false
