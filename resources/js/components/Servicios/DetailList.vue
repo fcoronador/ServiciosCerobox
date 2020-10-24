@@ -15,6 +15,7 @@
             <th>Fecha de inicio</th>
             <th>Fecha de fin</th>
             <th>Observaciones</th>
+            <th style="width: 148px">Opciones</th>
           </tr>
         </thead>
 

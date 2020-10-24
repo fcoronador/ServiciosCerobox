@@ -8,12 +8,6 @@
       <td>{{ servicio.FechaIni }}</td>
       <td>{{ servicio.FechaFin }}</td>
       <td>{{ servicio.obser}}</td>
-  
-
-    <td>
-      <button class="mini ui blue button" @click="onEdit">Editar</button>
-      <button class="mini ui red button" @click="onDelete">Borrar</button>
-    </td>
   </tr>
 </template>
 

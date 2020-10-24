@@ -7,6 +7,7 @@
     </div>
 
     <div class="ui main container">
+      <Form :form="form" @onFormSubmit="onFormSubmit" />
       <Loader v-if="loader" />
       <DetailList
         :servicios="servicios"

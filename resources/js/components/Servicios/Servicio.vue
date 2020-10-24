@@ -1,127 +1,177 @@
 <template>
-  <div id="app">
-    <div class="ui fixed inverted menu vue-color">
-      <div class="ui container">
-        <a href="#" class="header item">Gestion de Servicios</a>
-      </div>
-    </div>
+  <div class="my-form">
+    <form class="ui form">
+      <div class="fields">
+        <div class="four wide field">
+          <label>Nombre</label>
+          <input
+            type="text"
+            name="nombre"
+            placeholder="nombre"
+            @change="handleChange"
+            :value="form.nombre"
+          />
+        </div>
 
-    <div class="ui main container">
-      <MyForm :form="form" @onFormSubmit="onFormSubmit" />
-      <Loader v-if="loader" />
-      <CustomerList
-        :customers="customers"
-        @onDelete="onDelete"
-        @onEdit="onEdit"
-      />
-    </div>
+        <div class="four wide field d-block-flex">
+            <label>Tipo de servicio</label>
+          <div>
+            <label>Básico</label>
+            <input
+              type="radio"
+              name="Tservcio"
+              @change="handleChange"
+              value="1"
+            />
+          </div>
+          <div>
+            <label>Avanzado</label>
+            <input
+              type="radio"
+              name="Tservcio"
+              @change="handleChange"
+              value="0"
+            />
+          </div>
+        </div>
+
+        <div class="four wide field">
+          <label>Fecha de Inicio</label>
+          <input
+            type="date"
+            name="FechaIni"
+            @change="handleChange"
+            :value="form.FechaIni"
+          />
+        </div>
+        <div class="four wide field">
+          <label>Fecha de Finalización</label>
+          <input
+            type="date"
+            name="FechaFin"
+            @change="handleChange"
+            :value="form.FechaFin"
+          />
+        </div>
+        <div class="four wide field">
+          <label>Observación</label>
+          <input
+            type="text"
+            name="obser"
+            placeholder="Observaciones"
+            @change="handleChange"
+            :value="form.obser"
+          />
+        </div>
+        <div class="four wide field">
+          <label>Imagen</label>
+          <input
+            type="text"
+            name="img"
+            placeholder="Url de la imagen"
+            @change="handleChange"
+            :value="form.img"
+          />
+        </div>
+        <div class="two wide field">
+          <button :class="btnClass" @click="onFormSubmit">
+            {{ btnName }}
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-import MyForm from "./MyForm";
-import CustomerList from "./CustomerList";
-import Loader from "../Loader";
-
 export default {
-  name: "App",
-  components: {
-    MyForm,
-    CustomerList,
-    Loader
-  },
+  name: "Form",
   data() {
     return {
-      url: "http://localhost:8080/servicios", 
-      customers: [],
-      form: {nombre:"",cedula:"",correo:"",telefono:"",obser:"",img:"", isEdit: false }, 
-      loader: false
+      btnName: "Guardar",
+      btnClass: "ui primary button submit-button",
     };
   },
+  props: {
+    form: {
+      type: Object,
+    },
+  },
   methods: {
-    getCustomers() {
-      this.loader = true;
-
-      axios.get(this.url).then(data => {
-        this.customers = data.data;
-        this.loader = false;
-      });
+    handleChange(event) {
+      const { name, value } = event.target;
+      let form = this.form;
+      form[name] = value;
+      this.form = form;
     },
-    deleteCustomer(id) {
-      this.loader = true;
+    onFormSubmit(event) {
+      // prevent form submit
+      event.preventDefault();
 
-      axios.delete(`${this.url}/${id}`)
-        .then(() => {
-          this.getCustomers();
-        })
-        .catch(e => {
-          alert(e);
-        });
-    },
-    createCustomer(data) {
-      this.loader = true;
+      // form validation
+      if (this.formValidation()) {
+        // window.console.log("ready to submit");
+        this.$emit("onFormSubmit", this.form);
 
-      axios.post(this.url, {
-          nombre:data.nombre,
-          cedula:data.cedula,
-          correo:data.correo,
-          telefono:data.telefono,
-          obser:data.obser,
-          img:data.img
-        })
-        .then(() => {
-          this.getCustomers();
-        })
-        .catch(e => {
-          alert(e);
-        });
-    },
-    editCustomer(data) {
-      this.loader = true;
+        // change the button to save
+        this.btnName = "Guardar";
+        this.btnClass = "ui primary button submit-button";
 
-      axios
-        .put(`${this.url}/${data.id}`, {
-          nombre:data.nombre,
-          cedula:data.cedula,
-          correo:data.correo,
-          telefono:data.telefono,
-          obser:data.obser,
-          img:data.img
-        })
-        .then(() => {
-          this.getCustomers();
-        })
-        .catch(e => {
-          alert(e);
-        });
-    },
-    onDelete(id) {
-      // window.console.log("app delete " + id);
-
-      this.deleteCustomer(id);
-    },
-    onEdit(data) {
-      // window.console.log("app edit ", data);
-
-      this.form = data;
-      this.form.isEdit = true;
-    },
-    onFormSubmit(data) {
-      // window.console.log("app onFormSubmit", data);
-
-      if (data.isEdit) {
-        // call edit customer
-        this.editCustomer(data);
-      } else {
-        // call create customer
-        this.createCustomer(data);
+        // clear form fields
+        this.clearFormFields();
       }
+    },
+    formValidation() {
+      // first name
+      if (document.getElementsByName("nombre")[0].value === "") {
+        alert("Ingresa un nombre");
+        return false;
+      }
+
+      if (document.getElementsByName("Tservcio")[0].value === "") {
+        alert("Ingresa una opción de servicio");
+        return false;
+      }
+      if (document.getElementsByName("FechaIni")[0].value === "") {
+        alert("Ingresa una Fecha Inicio");
+        return false;
+      }
+      if (document.getElementsByName("FechaFin")[0].value === "") {
+        alert("Ingresa una Fecha de finalización");
+        return false;
+      }
+      if (document.getElementsByName("obser")[0].value === "") {
+        alert("Ingresa una observación");
+        return false;
+      }
+      if (document.getElementsByName("img")[0].value === "") {
+        alert("Ingresa una url");
+        return false;
+      }
+
+      return true;
+    },
+    clearFormFields() {
+      // clear form data
+      this.form.nombre = "";
+      this.form.Tservcio = "";
+      this.form.FechaIni = "";
+      this.form.FechaFin = "";
+      this.form.obser = "";
+      this.form.img = "";
+
+      this.form.isEdit = false;
+
+      // clear form fields
+      document.querySelector(".form").reset();
+    },
+  },
+  updated() {
+    if (this.form.isEdit) {
+      this.btnName = "Actualizar";
+      this.btnClass = "ui orange button submit-button";
     }
   },
-  created() {
-    this.getCustomers();
-  }
 };
 </script>
 
