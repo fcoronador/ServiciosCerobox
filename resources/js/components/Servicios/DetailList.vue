@@ -1,11 +1,7 @@
 <template>
  <div class="list d-inline-flex mx-2">
-    <Card
-        v-for="detalle in detalles"
-        :key="detalle.id"
-        :detalle="detalle"/>
     <div class="">
-      <table class="ui celled table col-8">
+      <table class="ui celled table">
         <thead>
           <tr>
             <th style="width: 50px; text-align: center">#</th>
@@ -35,12 +31,10 @@
 
 <script>
 import Detail from "./Detail";
-import Card from "./Card";
 export default {
   name: "DetailList",
   components: {
     Detail,
-    Card,
   },
   props: {
     servicios: {

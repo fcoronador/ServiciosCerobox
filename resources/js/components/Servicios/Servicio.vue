@@ -1,177 +1,131 @@
 <template>
-  <div class="my-form">
-    <form class="ui form">
-      <div class="fields">
-        <div class="four wide field">
-          <label>Nombre</label>
-          <input
-            type="text"
-            name="nombre"
-            placeholder="nombre"
-            @change="handleChange"
-            :value="form.nombre"
-          />
-        </div>
-
-        <div class="four wide field d-block-flex">
-            <label>Tipo de servicio</label>
-          <div>
-            <label>Básico</label>
-            <input
-              type="radio"
-              name="Tservcio"
-              @change="handleChange"
-              value="1"
-            />
-          </div>
-          <div>
-            <label>Avanzado</label>
-            <input
-              type="radio"
-              name="Tservcio"
-              @change="handleChange"
-              value="0"
-            />
-          </div>
-        </div>
-
-        <div class="four wide field">
-          <label>Fecha de Inicio</label>
-          <input
-            type="date"
-            name="FechaIni"
-            @change="handleChange"
-            :value="form.FechaIni"
-          />
-        </div>
-        <div class="four wide field">
-          <label>Fecha de Finalización</label>
-          <input
-            type="date"
-            name="FechaFin"
-            @change="handleChange"
-            :value="form.FechaFin"
-          />
-        </div>
-        <div class="four wide field">
-          <label>Observación</label>
-          <input
-            type="text"
-            name="obser"
-            placeholder="Observaciones"
-            @change="handleChange"
-            :value="form.obser"
-          />
-        </div>
-        <div class="four wide field">
-          <label>Imagen</label>
-          <input
-            type="text"
-            name="img"
-            placeholder="Url de la imagen"
-            @change="handleChange"
-            :value="form.img"
-          />
-        </div>
-        <div class="two wide field">
-          <button :class="btnClass" @click="onFormSubmit">
-            {{ btnName }}
-          </button>
-        </div>
+  <div id="app">
+    <div class="ui fixed inverted menu vue-color">
+      <div class="ui container">
+        <a href="#" class="header item">Detalles del cliente</a>
       </div>
-    </form>
+    </div>
+
+    <div class="ui main container">
+      <Form :form="form" @onFormSubmit="onFormSubmit" />
+      <Loader v-if="loader" />
+      <DetailList
+        :servicios="servicios"
+        :detalles="detalles"
+        @onDelete="onDelete"
+        @onEdit="onEdit"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+import Form from "./Form";
+import DetailList from "./DetailList";
+import Loader from "../Loader";
+
 export default {
-  name: "Form",
+  name: "App",
+  components: {
+    Form,
+    DetailList,
+    Loader
+  },
   data() {
     return {
-      btnName: "Guardar",
-      btnClass: "ui primary button submit-button",
+      url: "http://localhost:8080/servicios",
+      servicios: [],
+      detalles:[],
+      form: {nombre: "", img: "", Tservcio: "", FechaIni: "", FechaFin: "", obser: "", isEdit: false }, 
+      loader: false
     };
   },
-  props: {
-    form: {
-      type: Object,
-    },
-  },
   methods: {
-    handleChange(event) {
-      const { name, value } = event.target;
-      let form = this.form;
-      form[name] = value;
-      this.form = form;
+    getDetalles() {
+
+      this.loader = true;
+
+      axios.get(`${this.url}`).then(data => {
+       
+        this.servicios = data.data;
+        this.loader = false;
+      });
     },
-    onFormSubmit(event) {
-      // prevent form submit
-      event.preventDefault();
+    deleteDetalles(id) {
+      this.loader = true;
 
-      // form validation
-      if (this.formValidation()) {
-        // window.console.log("ready to submit");
-        this.$emit("onFormSubmit", this.form);
-
-        // change the button to save
-        this.btnName = "Guardar";
-        this.btnClass = "ui primary button submit-button";
-
-        // clear form fields
-        this.clearFormFields();
-      }
+      axios.delete(`${this.url}/${id}`)
+        .then(() => {
+          this.getDetalles();
+        })
+        .catch(e => {
+          alert(e);
+        });
     },
-    formValidation() {
-      // first name
-      if (document.getElementsByName("nombre")[0].value === "") {
-        alert("Ingresa un nombre");
-        return false;
-      }
+    createDetalles(data) {
+      this.loader = true;
 
-      if (document.getElementsByName("Tservcio")[0].value === "") {
-        alert("Ingresa una opción de servicio");
-        return false;
-      }
-      if (document.getElementsByName("FechaIni")[0].value === "") {
-        alert("Ingresa una Fecha Inicio");
-        return false;
-      }
-      if (document.getElementsByName("FechaFin")[0].value === "") {
-        alert("Ingresa una Fecha de finalización");
-        return false;
-      }
-      if (document.getElementsByName("obser")[0].value === "") {
-        alert("Ingresa una observación");
-        return false;
-      }
-      if (document.getElementsByName("img")[0].value === "") {
-        alert("Ingresa una url");
-        return false;
-      }
-
-      return true;
+      axios.post(this.url, {
+          nombre:data.nombre,
+          img:data.img,
+          Tservcio:data.Tservcio,
+          FechaIni:data.FechaIni,
+          FechaFin:data.FechaFin,
+          obser:data.obser
+        })
+        .then(() => {
+          this.getDetalles();
+        })
+        .catch(e => {
+          alert(e);
+        });
     },
-    clearFormFields() {
-      // clear form data
-      this.form.nombre = "";
-      this.form.Tservcio = "";
-      this.form.FechaIni = "";
-      this.form.FechaFin = "";
-      this.form.obser = "";
-      this.form.img = "";
+    editDetalles(data) {
+      this.loader = true;
 
-      this.form.isEdit = false;
-
-      // clear form fields
-      document.querySelector(".form").reset();
+      axios
+        .put(`${this.url}/${data.id}`, {
+           nombre:data.nombre,
+           img:data.img,
+           Tservcio:data.Tservcio,
+           FechaIni:data.FechaIni,
+           FechaFin:data.FechaFin,
+           obser:data.obser
+        })
+        .then(() => {
+          this.getDetalles();
+        })
+        .catch(e => {
+          alert(e);
+        });
     },
-  },
-  updated() {
-    if (this.form.isEdit) {
-      this.btnName = "Actualizar";
-      this.btnClass = "ui orange button submit-button";
+    onDelete(id) {
+      // window.console.log("app delete " + id);
+
+      this.deleteDetalles(id);
+    },
+    onEdit(data) {
+      // window.console.log("app edit ", data);
+
+      this.form = data;
+      this.form.isEdit = true;
+    },
+    onFormSubmit(data) {
+      // window.console.log("app onFormSubmit", data);
+
+      if (data.isEdit) {
+        
+        this.editDetalles(data);
+      } else {
+        
+        this.createDetalles(data);
+      }
     }
   },
+  created() {
+    this.getDetalles();
+  }
 };
 </script>
 
