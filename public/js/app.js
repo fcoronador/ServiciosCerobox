@@ -51304,6 +51304,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.component('Cliente', __webpack_require__(/*! ./components/Cliente.vue */ "./resources/js/components/Cliente.vue")["default"]);
 Vue.component('Detalle', __webpack_require__(/*! ./components/Detalles/Detalle.vue */ "./resources/js/components/Detalles/Detalle.vue")["default"]);
+Vue.component('Servicio', __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module './components/Servicio/Servicio.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
