@@ -16,8 +16,12 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
+
+Route::view('/','welcome')->name('inicio');
+
+
 Route::resource('clientes',ClienteController::class);
 Route::resource('servicios',ServicioController::class);
-Route::get('/','NavController@index' )->name('inicio');
+Route::get('/ControlClientes','NavController@index' )->name('clientes');
 Route::get('/ControlServicios','NavController@ControlServicios' )->name('servicios');
 Route::get('/detalles/{cliente}','NavController@ClienteDetalle' )->name('cliente');
