@@ -1,14 +1,13 @@
 <template>
   <tr>
-   
-      <td>{{ servicio.id }}</td>
-      <td><img :src="servicio.img" alt="" srcset="" /></td>
-      <td>{{ servicio.nombre }}</td>
-      <td>{{ servicio.Tservcio }}</td>
-      <td>{{ servicio.FechaIni }}</td>
-      <td>{{ servicio.FechaFin }}</td>
-      <td>{{ servicio.obser}}</td>
-  
+    <td>{{ servicio.id }}</td>
+    <td><img :src="servicio.img" alt="" srcset="" /></td>
+    <td>{{ servicio.nombre }}</td>
+    <td v-if="servicio.Tservcio === 1">Básico</td>
+    <td v-else>Avanzado</td>
+    <td>{{ servicio.FechaIni }}</td>
+    <td>{{ servicio.FechaFin }}</td>
+    <td>{{ servicio.obser }}</td>
 
     <td>
       <button class="mini ui blue button" @click="onEdit">Editar</button>
@@ -28,11 +27,11 @@ export default {
   methods: {
     onDelete() {
       // window.console.log("customer delete " + this.customer.id);
-      this.$emit("onDelete", this.customer.id);
+      this.$emit("onDelete", this.servicio.id);
     },
     onEdit() {
       // window.console.log("customer edit " + this.customer.id);
-      this.$emit("onEdit", this.customer);
+      this.$emit("onEdit", this.servicio);
     },
   },
 };

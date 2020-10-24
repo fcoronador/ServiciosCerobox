@@ -2870,7 +2870,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Detail",
   props: {
@@ -2881,11 +2880,11 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     onDelete: function onDelete() {
       // window.console.log("customer delete " + this.customer.id);
-      this.$emit("onDelete", this.customer.id);
+      this.$emit("onDelete", this.servicio.id);
     },
     onEdit: function onEdit() {
       // window.console.log("customer edit " + this.customer.id);
-      this.$emit("onEdit", this.customer);
+      this.$emit("onEdit", this.servicio);
     }
   }
 });
@@ -39557,7 +39556,9 @@ var render = function() {
     _vm._v(" "),
     _c("td", [_vm._v(_vm._s(_vm.servicio.nombre))]),
     _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.servicio.Tservcio))]),
+    _vm.servicio.Tservcio === 1
+      ? _c("td", [_vm._v("Básico")])
+      : _c("td", [_vm._v("Avanzado")]),
     _vm._v(" "),
     _c("td", [_vm._v(_vm._s(_vm.servicio.FechaIni))]),
     _vm._v(" "),
