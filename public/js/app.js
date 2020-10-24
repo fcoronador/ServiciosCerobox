@@ -39819,7 +39819,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "ui fixed inverted menu vue-color" }, [
       _c("div", { staticClass: "ui container" }, [
         _c("a", { staticClass: "header item", attrs: { href: "#" } }, [
-          _vm._v("Detalles del cliente")
+          _vm._v("Control de Servicios")
         ])
       ])
     ])

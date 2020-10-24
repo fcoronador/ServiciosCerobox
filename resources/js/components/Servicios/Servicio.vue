@@ -2,7 +2,7 @@
   <div id="app">
     <div class="ui fixed inverted menu vue-color">
       <div class="ui container">
-        <a href="#" class="header item">Detalles del cliente</a>
+        <a href="#" class="header item">Control de Servicios</a>
       </div>
     </div>
 
