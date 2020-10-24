@@ -14,7 +14,8 @@ class ServicioController extends Controller
      */
     public function index()
     {
-        //
+        $servicios =  servicio::all();
+        return response($servicios, 200);
     }
 
     /**
@@ -25,7 +26,8 @@ class ServicioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $servicio = servicio::create($request->all());
+        return response('servicio creado', 200);
     }
 
     /**
@@ -48,7 +50,8 @@ class ServicioController extends Controller
      */
     public function update(Request $request, servicio $servicio)
     {
-        //
+        $servicio->update($request->all());
+        return response('servicio actualizado', 200);
     }
 
     /**
@@ -59,6 +62,7 @@ class ServicioController extends Controller
      */
     public function destroy(servicio $servicio)
     {
-        //
+        $servicio->delete();
+        return response('Se elimino', 200);
     }
 }
